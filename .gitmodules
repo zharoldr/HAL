@@ -1,0 +1,15 @@
+[submodule "Assets/Turtlebot/src/turtlebot"]
+	path = Assets/Turtlebot/src/turtlebot
+	url = git@github.com:turtlebot/turtlebot.git
+[submodule "Assets/Turtlebot/src/turtlebot_create"]
+	path = Assets/Turtlebot/src/turtlebot_create
+	url = git@github.com:turtlebot/turtlebot_create.git
+[submodule "Assets/Turtlebot/src/kobuki"]
+	path = Assets/Turtlebot/src/kobuki
+	url = git@github.com:yujinrobot/kobuki.git
+[submodule "Assets/Turtlebot/src/kobuki_msgs"]
+	path = Assets/Turtlebot/src/kobuki_msgs
+	url = git@github.com:yujinrobot/kobuki_msgs.git
+[submodule "Assets/Turtlebot/src/turtlebot_interactions"]
+	path = Assets/Turtlebot/src/turtlebot_interactions
+	url = git@github.com:turtlebot/turtlebot_interactions.git
