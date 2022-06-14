@@ -13,3 +13,15 @@
 [submodule "Assets/Turtlebot/src/turtlebot_interactions"]
 	path = Assets/Turtlebot/src/turtlebot_interactions
 	url = git@github.com:turtlebot/turtlebot_interactions.git
+[submodule "Assets/Turtlebot/src/kobuki_core"]
+	path = Assets/Turtlebot/src/kobuki_core
+	url = git@github.com:yujinrobot/kobuki_core.git
+[submodule "Assets/Turtlebot/src/yujin_ocs"]
+	path = Assets/Turtlebot/src/yujin_ocs
+	url = git@github.com:yujinrobot/yujin_ocs.git
+[submodule "Assets/Turtlebot/src/yocs_msgs"]
+	path = Assets/Turtlebot/src/yocs_msgs
+	url = git@github.com:yujinrobot/yocs_msgs.git
+[submodule "Assets/Turtlebot/src/vision_opencv"]
+	path = Assets/Turtlebot/src/vision_opencv
+	url = git@github.com:ros-perception/vision_opencv.git
