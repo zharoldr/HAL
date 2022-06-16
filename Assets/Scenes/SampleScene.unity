@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent_topic: /pedsim_simulator/simulated_agents
-  robot_topic: /pedsim_simulator/robot_position
-  agent_prefab: {fileID: 6243192349468984870, guid: 43f80828bd000b694b917181facebc85, type: 3}
+  robot_topic: /pedsim_simulator/robot_state
+  robot_model: {fileID: 7149660827352966617, guid: 0c3cd5a669e5dc5a8912f235174f1e3c, type: 3}
   agent_models:
   - {fileID: 7934601614315862747, guid: 0f20cee1e1cdd49018f540e5a822ce1d, type: 3}
   - {fileID: 5179085669999940443, guid: 30049517a3beeea9cbe4a4500822b9bf, type: 3}
