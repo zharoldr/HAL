@@ -9,15 +9,14 @@ public class HAL : MonoBehaviour {
 
     private ROSConnection ros;
 
-    // Type: pedsim_msgs/AgentStates
     public string agent_topic = "/pedsim_simulator/simulated_agents";
 
-    // Type: nav_msgs/Odometry
-    public string robot_topic = "/pedsim_simulator/robot_position";
+    public string robot_topic = "/pedsim_simulator/robot_state";
 
-    public GameObject agent_prefab;
-
+    private GameObject robot;
     private List<GameObject> agents;
+
+    public GameObject robot_model;
 
     public List<GameObject> agent_models;
 
@@ -25,7 +24,9 @@ public class HAL : MonoBehaviour {
         ros = ROSConnection.GetOrCreateInstance();
 
         ros.Subscribe<AgentStatesMsg>(agent_topic, agent_callback);
-        ros.Subscribe<RosMessageTypes.Nav.OdometryMsg>(robot_topic, robot_callback);
+        ros.Subscribe<AgentStateMsg>(robot_topic, robot_callback);
+
+        robot = Instantiate(robot_model, Vector3.zero, Quaternion.identity);
 
         agents = new List<GameObject>();
     }
@@ -54,7 +55,12 @@ public class HAL : MonoBehaviour {
         }
     }
 
-    void robot_callback(RosMessageTypes.Nav.OdometryMsg msg) {
-        // Debug.Log(msg);
+    void robot_callback(AgentStateMsg msg) {
+
+        Vector3 current_pos = robot.transform.position;
+        Vector3 new_pos = new Vector3((float)msg.pose.position.x, 0.0f, (float)msg.pose.position.y);
+
+        robot.transform.position = new_pos;
+        robot.transform.localRotation = Quaternion.AngleAxis((new Quaternion((float)msg.pose.orientation.x, (float)msg.pose.orientation.y, (float)msg.pose.orientation.z, (float)msg.pose.orientation.w)).eulerAngles.z - 90.0f, Vector3.up);
     }
 }
