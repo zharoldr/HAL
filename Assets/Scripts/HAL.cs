@@ -61,6 +61,6 @@ public class HAL : MonoBehaviour {
         Vector3 new_pos = new Vector3((float)msg.pose.position.x, 0.0f, (float)msg.pose.position.y);
 
         robot.transform.position = new_pos;
-        robot.transform.rotation = new Quaternion((float)msg.pose.orientation.y, -(float)msg.pose.orientation.z, (float)msg.pose.orientation.x, (float)msg.pose.orientation.w);
+        robot.transform.rotation = new Quaternion((float)msg.pose.orientation.x, -(float)msg.pose.orientation.z, (float)msg.pose.orientation.y, (float)msg.pose.orientation.w) * Quaternion.Euler(0.0f, 90.0f, 0.0f);
     }
 }

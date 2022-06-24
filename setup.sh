@@ -2,9 +2,11 @@
 
 
 rm -rf Assets/URDF*
-rm -rf Turtlebot/src/ar_track_alvar/ar_track_alvar/ Turtlebot/src/ar_track_alvar.rosinstall
+rm -rf Deps/build/
+rm -rf Deps/devel/
+rm -rf Deps/src/ar_track_alvar/ar_track_alvar/ Turtlebot/src/ar_track_alvar.rosinstall
 
-cd Turtlebot && catkin_make
+cd Deps && catkin_make
 
 cd src/turtlebot/turtlebot_description/robots
 
