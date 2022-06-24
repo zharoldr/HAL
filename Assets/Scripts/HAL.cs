@@ -46,7 +46,11 @@ public class HAL : MonoBehaviour {
                 
                 Vector3 face_dir = (new_pos - current_pos).normalized;
 
+                float dirty_vel = Vector3.Distance(agents[(int)msg.agent_states[i].id].transform.position, new_pos);
+
                 agents[(int)msg.agent_states[i].id].transform.position = new_pos;
+
+                agents[(int)msg.agent_states[i].id].GetComponent<Animator>().speed = 20.0f * dirty_vel;
 
                 if (face_dir != Vector3.zero) {
                     agents[(int)msg.agent_states[i].id].transform.rotation = Quaternion.Slerp(agents[(int)msg.agent_states[i].id].transform.rotation, Quaternion.LookRotation(face_dir), 15.0f * Time.deltaTime);
