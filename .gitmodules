@@ -1,21 +1,21 @@
-[submodule "Turtlebot/src/turtlebot"]
-	path = Turtlebot/src/turtlebot
+[submodule "Deps/src/turtlebot"]
+	path = Deps/src/turtlebot
 	url = git@github.com:turtlebot/turtlebot.git
-[submodule "Turtlebot/src/kobuki"]
-	path = Turtlebot/src/kobuki
+[submodule "Deps/src/kobuki"]
+	path = Deps/src/kobuki
 	url = git@github.com:yujinrobot/kobuki.git
-[submodule "Turtlebot/src/kobuki_msgs"]
-	path = Turtlebot/src/kobuki_msgs
+[submodule "Deps/src/kobuki_msgs"]
+	path = Deps/src/kobuki_msgs
 	url = git@github.com:yujinrobot/kobuki_msgs.git
-[submodule "Turtlebot/src/yujin_ocs"]
-	path = Turtlebot/src/yujin_ocs
+[submodule "Deps/src/yujin_ocs"]
+	path = Deps/src/yujin_ocs
 	url = git@github.com:yujinrobot/yujin_ocs.git
-[submodule "Turtlebot/src/kobuki_core"]
-	path = Turtlebot/src/kobuki_core
+[submodule "Deps/src/kobuki_core"]
+	path = Deps/src/kobuki_core
 	url = git@github.com:yujinrobot/kobuki_core.git
-[submodule "Turtlebot/src/yocs_msgs"]
-	path = Turtlebot/src/yocs_msgs
+[submodule "Deps/src/yocs_msgs"]
+	path = Deps/src/yocs_msgs
 	url = git@github.com:yujinrobot/yocs_msgs.git
-[submodule "Turtlebot/src/ar_track_alvar"]
-	path = Turtlebot/src/ar_track_alvar
+[submodule "Deps/src/ar_track_alvar"]
+	path = Deps/src/ar_track_alvar
 	url = git@github.com:ros-perception/ar_track_alvar.git
