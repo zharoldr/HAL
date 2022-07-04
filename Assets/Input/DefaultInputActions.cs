@@ -35,7 +35,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Fire"",
+                    ""name"": ""ViewMode"",
                     ""type"": ""Button"",
                     ""id"": ""9a35c103-d058-4d25-badf-6e7269ad3061"",
                     ""expectedControlType"": ""Button"",
@@ -218,61 +218,6 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""886e731e-7071-4ae4-95c0-e61739dad6fd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee3d0cd2-254e-47a7-a8cb-bc94d9658c54"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8255d333-5683-4943-a58a-ccb207ff1dce"",
-                    ""path"": ""<XRController>/{PrimaryAction}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""UpDown"",
                     ""id"": ""05975d34-7998-4b91-b572-867dc12ef714"",
                     ""path"": ""1DAxis"",
@@ -304,6 +249,17 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Elevate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94d71efa-e2cd-424d-98af-62e65816e9c7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ViewMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -881,7 +837,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_ViewMode = m_Player.FindAction("ViewMode", throwIfNotFound: true);
         m_Player_Elevate = m_Player.FindAction("Elevate", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -946,7 +902,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_ViewMode;
     private readonly InputAction m_Player_Elevate;
     public struct PlayerActions
     {
@@ -954,7 +910,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         public PlayerActions(@DefaultInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @ViewMode => m_Wrapper.m_Player_ViewMode;
         public InputAction @Elevate => m_Wrapper.m_Player_Elevate;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -971,9 +927,9 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @ViewMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnViewMode;
+                @ViewMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnViewMode;
+                @ViewMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnViewMode;
                 @Elevate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnElevate;
                 @Elevate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnElevate;
                 @Elevate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnElevate;
@@ -987,9 +943,9 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
+                @ViewMode.started += instance.OnViewMode;
+                @ViewMode.performed += instance.OnViewMode;
+                @ViewMode.canceled += instance.OnViewMode;
                 @Elevate.started += instance.OnElevate;
                 @Elevate.performed += instance.OnElevate;
                 @Elevate.canceled += instance.OnElevate;
@@ -1151,7 +1107,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
+        void OnViewMode(InputAction.CallbackContext context);
         void OnElevate(InputAction.CallbackContext context);
     }
     public interface IUIActions

@@ -3331,6 +3331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f9e444a4f866559bdb54d91951e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hal: {fileID: 253453128}
+  follow_robot: 0
   move_speed: 0.1
   mouse_sensitivity: 0.1
 --- !u!81 &809239935
