@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class FlyCamController : MonoBehaviour {
 
     public HAL hal;
+
+    private Camera cam;
     
     private bool follow_robot;
 
@@ -18,7 +20,6 @@ public class FlyCamController : MonoBehaviour {
     private InputAction move;
     private InputAction look;
     private InputAction elev;
-
     private InputAction view;
 
     private Vector2 moveDir;
@@ -26,12 +27,20 @@ public class FlyCamController : MonoBehaviour {
 
     private float elevDir;
 
+    private float zoomDir;
+    
+    private float zoom;
+
     private void Awake() {
+        cam = gameObject.GetComponent<Camera>();
+
         FlyCamControls = new DefaultInputActions();
 
         Cursor.lockState = CursorLockMode.Locked;
 
         robot = null;
+
+        zoom = 1.0f;
     }
 
     
@@ -53,6 +62,12 @@ public class FlyCamController : MonoBehaviour {
 
     private void ToggleView(InputAction.CallbackContext context) {
         follow_robot = !follow_robot;
+
+        if (follow_robot) {
+            cam.orthographic = true;
+        } else {
+            cam.orthographic = false;
+        }
     }
 
     void Update() {
@@ -63,6 +78,14 @@ public class FlyCamController : MonoBehaviour {
 
             lookDir.y = Mathf.Clamp(lookDir.y, -90.0f, 90.0f);
         } else {
+            moveDir = Vector2.zero;
+
+            zoomDir = Mathf.Clamp(Mouse.current.scroll.ReadValue().y, -1.0f, 1.0f);
+
+            zoom += 0.5f * (zoomDir * (0.33f * zoom));
+            zoom = Mathf.Clamp(zoom, 0.5f, 20.0f);
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoom, 15.0f * Time.deltaTime);
+
             if (!robot) {
                 robot = hal.Robot;
             }
