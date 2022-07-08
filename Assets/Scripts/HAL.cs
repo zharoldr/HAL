@@ -44,11 +44,13 @@ public class HAL : MonoBehaviour {
                 agents.Add(new_agent);
             }
         } else {
+            // LERP is only happening during callback
+            // Need to update positions in Update loop (probably)
             for (int i = 0; i < msg.agent_states.Length; i++) {
                 Vector3 current_pos = agents[(int)msg.agent_states[i].id].transform.position;
                 Vector3 want_pos = new Vector3((float)msg.agent_states[i].pose.position.x, 0.0f, (float)msg.agent_states[i].pose.position.y);
                 
-                Vector3 new_pos = Vector3.Lerp(current_pos, want_pos, 15.0f * Time.deltaTime);
+                Vector3 new_pos = Vector3.Lerp(current_pos, want_pos, Time.deltaTime);
                 Vector3 face_dir = (new_pos - current_pos).normalized;
 
                 float dirty_vel = Vector3.Distance(agents[(int)msg.agent_states[i].id].transform.position, new_pos);
